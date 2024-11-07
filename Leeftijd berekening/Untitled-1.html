@@ -8,31 +8,32 @@
 <body>
 <script>
 
-function berekenLeeftijd() {
-    
-    let geboorteJaar = prompt("Welk jaar ben je geboren?");
-    let geboorteMaand = prompt("Welke maand ben je geboren? (1-12)");
-    let geboorteDag = prompt("Welke dag ben je geboren?");
+function berekenLeeftijd(geboorteJaar, geboorteMaand, geboorteDag) {
+  
+  let nu = new Date();
+  
+  
+  let geboorteDatum = new Date(geboorteJaar, geboorteMaand - 1, geboorteDag);
 
-    
-    geboorteMaand = parseInt(geboorteMaand) - 1;
+  
+  let leeftijdInMilliseconden = nu - geboorteDatum;
 
-    
-    let geboorteDatum = new Date(geboorteJaar, geboorteMaand, geboorteDag);
-    let nu = new Date();
 
-    
-    let verschilInMillisec = nu - geboorteDatum;
+  let leeftijdInJaren = leeftijdInMilliseconden / (1000 * 60 * 60 * 24 * 365.25);
 
-    
-    let leeftijdInJaren = verschilInMillisec / (1000 * 60 * 60 * 24 * 365.25);
-
-    
-    console.log(`Je bent ${leeftijdInJaren.toFixed(2)} jaar oud`);
+ 
+  console.log(`Je bent ${leeftijdInJaren.toFixed(2)} jaar oud`);
+  
+ 
+  return leeftijdInJaren;
 }
 
 
-berekenLeeftijd();
+let geboorteJaar = prompt("Welk jaar ben je geboren?");
+let geboorteMaand = prompt("Welke maand ben je geboren?");
+let geboorteDag = prompt("Welke dag ben je geboren?");
+berekenLeeftijd(geboorteJaar, geboorteMaand, geboorteDag);
+
 
 </script>    
 </body>
